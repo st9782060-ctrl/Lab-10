@@ -1,0 +1,37 @@
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+    srand(static_cast<unsigned int>(time(0)));
+
+    const int m = 6, n = 4;
+    int arr[m][n];
+
+    cout << "Matrix 6x4:" << endl;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            arr[i][j] = rand() % 21 - 10;
+            cout << setw(5) << arr[i][j];
+        }
+        cout << endl;
+    }
+
+    cout << "\nEven numbers count in each column:" << endl;
+    for (int j = 0; j < n; j++) {
+        int evenCount = 0;
+        for (int i = 0; i < m; i++) {
+            if (arr[i][j] % 2 == 0) {
+                evenCount++;
+            }
+        }
+        cout << "Column " << j + 1 << ": " << evenCount << endl;
+    }
+
+    cout << "Press Enter to exit...";
+    cin.get();
+    return 0;
+}
